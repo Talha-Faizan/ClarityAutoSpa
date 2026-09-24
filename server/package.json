@@ -1,0 +1,12 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Clarity auto spa server",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "apps.js",
+  "scripts": {
+    "test": "npm run dev"
+  }
+}

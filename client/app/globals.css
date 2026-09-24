@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #FEC701;
+  --color-brand-bg-alt: #FEC701;
+  --color-brand-primary: #000000;
+  --color-brand-secondary: #393939;
+  --color-brand-muted: #5A5A5A;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-archivo), sans-serif;
+
+  --animate-wiggle: wiggle 3s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+  --animate-bounce-slow: bounce-slow 3s infinite;
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-10deg); }
+    30% { transform: rotate(5deg); }
+    40% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(-10%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+    50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+  }
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-secondary);
+  -webkit-font-smoothing: antialiased;
+}

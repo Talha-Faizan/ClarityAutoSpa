@@ -14,6 +14,7 @@ export default async function ServicesSection() {
         image: s.imageUrl || "/img-6.jpg",
         category: s.category,
         time: s.time,
+        acuityLink: s.acuityLink,
         carType: s.carType
       }));
     } else {

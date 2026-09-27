@@ -70,13 +70,14 @@ export default function ServicesTab() {
         price: service.price,
         category: service.category,
         time: service.time || "",
+        acuityLink: service.acuityLink || "",
         carType: service.carType || "All Vehicles",
         imageUrl: service.imageUrl || "",
         displayOrder: service.displayOrder || 0
       });
     } else {
       setEditingId(null);
-      setFormData({ name: "", description: "", price: "", time: "", category: serviceCategories[0] || "Detailing", carType: "All Vehicles", imageUrl: "", displayOrder: 0 });
+      setFormData({ name: "", description: "", price: "", time: "", acuityLink: "", category: serviceCategories[0] || "Detailing", carType: "All Vehicles", imageUrl: "", displayOrder: 0 });
     }
     setImageFile(null);
     setIsModalOpen(true);
@@ -268,6 +269,11 @@ export default function ServicesTab() {
               <div>
                 <label className="block text-sm font-medium text-gray-900 mb-1">Estimated Time</label>
                 <input type="text" value={formData.time} onChange={e => setFormData({...formData, time: e.target.value})} className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g. 2 hours 45 minutes" />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-900 mb-1">Acuity Booking Link</label>
+                <input type="url" value={formData.acuityLink} onChange={e => setFormData({...formData, acuityLink: e.target.value})} className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="https://clarityautospa.as.me/..." />
               </div>
 
               <div>

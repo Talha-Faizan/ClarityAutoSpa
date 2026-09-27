@@ -7,13 +7,13 @@ import Image from "next/image";
 // Static image map for quiz options that don't directly correspond to a service
 const OPTION_IMAGES = {
   // Vehicle types
-  Sedan: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600&h=400&fit=crop&q=80",
-  SUV: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop&q=80",
-  XLSUV: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=600&h=400&fit=crop&q=80",
+  Sedan: "/quiz/sedan.jpg",
+  SUV: "/quiz/suv.jpg",
+  XLSUV: "/quiz/xlsuv.jpg",
   // Goals
-  wash: "/Quiz/wash.jpg",
+  wash: "/quiz/wash.jpg",
   full: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&h=400&fit=crop&q=80",
-  interior: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop&q=80",
+  interior: "/quiz/interior.jpg",
   protection: "https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=600&h=400&fit=crop&q=80",
   tinting: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&h=400&fit=crop&q=80",
   custom: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&h=400&fit=crop&q=80",

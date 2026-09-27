@@ -66,7 +66,9 @@ export default function ServiceCard({ service }) {
             $ {service.price}
           </div>
           <a
-            href="#quote"
+            href={service.acuityLink || "#quote"}
+            target={service.acuityLink ? "_blank" : "_self"}
+            rel={service.acuityLink ? "noopener noreferrer" : ""}
             className="flex items-center gap-1 text-[12px] font-medium text-gray-900 hover:text-brand-bg transition-colors whitespace-nowrap"
           >
             Order Now <ArrowUpRight className="w-3.5 h-3.5" />

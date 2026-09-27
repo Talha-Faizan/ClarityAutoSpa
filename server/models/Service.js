@@ -6,6 +6,7 @@ const serviceSchema = new mongoose.Schema({
   price: { type: String, required: true },
   category: { type: String, required: true },
   time: { type: String, default: '' },
+  acuityLink: { type: String, default: '' },
   carType: { type: String, default: 'All Vehicles' },
   displayOrder: { type: Number, default: 0 },
   imageUrl: { type: String },

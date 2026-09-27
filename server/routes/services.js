@@ -12,6 +12,7 @@ const serviceSchema = z.object({
   description: z.string().min(1, "Description is required"),
   price: z.string().min(1, "Price is required"),
   category: z.string().min(1, "Category is required"),
+  time: z.string().optional(),
   carType: z.string().optional(),
   displayOrder: z.number().int().optional(),
   imageUrl: z.string().url().optional().or(z.literal('')),

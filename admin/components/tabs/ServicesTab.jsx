@@ -69,13 +69,14 @@ export default function ServicesTab() {
         description: service.description,
         price: service.price,
         category: service.category,
+        time: service.time || "",
         carType: service.carType || "All Vehicles",
         imageUrl: service.imageUrl || "",
         displayOrder: service.displayOrder || 0
       });
     } else {
       setEditingId(null);
-      setFormData({ name: "", description: "", price: "", category: serviceCategories[0] || "Detailing", carType: "All Vehicles", imageUrl: "", displayOrder: 0 });
+      setFormData({ name: "", description: "", price: "", time: "", category: serviceCategories[0] || "Detailing", carType: "All Vehicles", imageUrl: "", displayOrder: 0 });
     }
     setImageFile(null);
     setIsModalOpen(true);
@@ -208,6 +209,11 @@ export default function ServicesTab() {
                         {service.carType}
                       </span>
                     )}
+                    {service.time && (
+                      <span className="px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] uppercase font-bold rounded-sm tracking-wider">
+                        {service.time}
+                      </span>
+                    )}
                   </div>
                   <div className="text-xs text-gray-500 mt-1">{service.description}</div>
                 </div>
@@ -257,6 +263,11 @@ export default function ServicesTab() {
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">$</div>
                   <input required type="number" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="0" />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-900 mb-1">Estimated Time</label>
+                <input type="text" value={formData.time} onChange={e => setFormData({...formData, time: e.target.value})} className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g. 2 hours 45 minutes" />
               </div>
 
               <div>

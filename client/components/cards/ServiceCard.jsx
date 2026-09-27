@@ -40,6 +40,11 @@ export default function ServiceCard({ service }) {
                 {service.category}
               </span>
             )}
+            {service.time && (
+              <span className="bg-gray-100 text-gray-500 px-3 py-1 rounded-full text-[10px] font-medium tracking-wide">
+                {service.time}
+              </span>
+            )}
             {service.popular ? (
               <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-[10px] font-medium tracking-wide">
                 Popular

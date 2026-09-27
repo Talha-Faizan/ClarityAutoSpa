@@ -13,6 +13,7 @@ export default async function ServicesSection() {
         price: s.price,
         image: s.imageUrl || "/img-6.jpg",
         category: s.category,
+        time: s.time,
         carType: s.carType
       }));
     } else {

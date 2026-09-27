@@ -3,6 +3,7 @@ export const contactInfo = {
   address: "117 14th St, Brooklyn, NY 11215",
   hours: "Open until 6:30 pm",
   website: "claritybk.as.me",
+  email: "clarityautospabk@gmail.com"
 };
 
 export const stats = [
@@ -14,38 +15,44 @@ export const stats = [
 
 export const services = [
   {
-    id: "express",
-    title: "Express Wash",
-    description: "A quick, thorough exterior wash to get you back on the road shining.",
-    price: "$19",
-    icon: "Car",
+    id: "mini_detail",
+    title: "Wash & Vacuum",
+    description: "Exterior hand wash and thorough interior cleaning. Starting at $125.",
+    price: "$125+",
+   
+    image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop",
     popular: false,
   },
   {
-    id: "premium",
-    title: "Premium Detail",
-    description: "Deep interior cleaning plus our signature exterior wax and shine.",
-    price: "$49",
-    icon: "Sparkles",
+    id: "full_detail",
+    title: "Full Detailing",
+    description: "Complete interior and exterior reset for a factory-fresh feel. Starting at $379.",
+    price: "$379+",
+   
+    image: "https://images.unsplash.com/photo-1708805282683-50a060eba80f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     popular: true,
   },
   {
     id: "ceramic",
-    title: "Ceramic Coating",
-    description: "Long-lasting protection against elements with a mirror-like finish.",
-    price: "$149",
-    icon: "Shield",
+    title: "Paint Correction + Ceramic",
+    description: "Swirl removal and long-lasting ceramic coating. Starting at $761.",
+    price: "$761+",
+    
+    image: "https://plus.unsplash.com/premium_photo-1682148721164-f9793d575d61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     popular: false,
   },
   {
-    id: "interior",
-    title: "Interior Revival",
-    description: "Stain removal, leather conditioning, and full cabin sanitization.",
-    price: "$89",
-    icon: "Droplets",
+    id: "wraps",
+    title: "Vinyl Wraps & PPF",
+    description: "Full color change wraps and Xpel Paint Protection Film. Starting at $3,500.",
+    price: "$3.5k+",
+  
+    image: "https://images.unsplash.com/photo-1747842914486-481cc1c7a04a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     popular: false,
   },
 ];
+
+
 
 export const whyUsPoints = [
   {
@@ -88,5 +95,41 @@ export const reviews = [
     source: "Facebook",
     rating: 5,
     text: "Fast, affordable, and incredibly thorough. The waiting area is spotless and the results speak for themselves.",
+  },
+  {
+    name: "David Chen",
+    source: "Google Reviews",
+    rating: 5,
+    text: "Incredible attention to detail! They managed to get out coffee stains from my seats that have been there for years.",
+  },
+  {
+    name: "Marcus Johnson",
+    source: "Yelp",
+    rating: 5,
+    text: "The PPF installation was flawless. You can't even tell the film is there. True professionals who take pride in their work.",
+  },
+  {
+    name: "Jessica Rivera",
+    source: "Google Reviews",
+    rating: 5,
+    text: "I've been to many detailers in Brooklyn, but Clarity is by far the best. The team is honest, the pricing is transparent, and my car looks brand new.",
+  },
+  {
+    name: "Tony S.",
+    source: "Facebook",
+    rating: 5,
+    text: "Got the Starlight headliner and ambient lighting done here. My interior looks like a spaceship now. Absolutely love it!",
+  },
+  {
+    name: "Rachel L.",
+    source: "Google Reviews",
+    rating: 5,
+    text: "Very convenient location in Park Slope. The Express wash is quick but still higher quality than any drive-through wash I've used.",
+  },
+  {
+    name: "Brian K.",
+    source: "Yelp",
+    rating: 4,
+    text: "Great wash and friendly service. Only giving 4 stars because it was pretty busy on a Saturday, but the waiting area was nice.",
   },
 ];

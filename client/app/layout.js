@@ -1,7 +1,7 @@
 import { Archivo_Black, Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/animations/SmoothScroll";
 import "./globals.css";
 
 const archivoBlack = Archivo_Black({

@@ -17,7 +17,7 @@ export default function Footer() {
               <Image src="/logo.png" alt="Clarity Auto Spa Logo" width={300} height={192} className="h-40 md:h-48 w-auto object-contain mx-auto md:mx-0" />
             </Link>
             <p className="text-brand-muted leading-relaxed mb-6 max-w-sm">
-              Premium car washing and detailing services available 24/7. 
+              Premium auto detailing services. 
               We combine expert care with eco-friendly practices to keep your vehicle looking its best.
             </p>
           </div>

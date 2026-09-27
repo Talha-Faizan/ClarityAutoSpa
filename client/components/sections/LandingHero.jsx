@@ -14,7 +14,7 @@ const exampleImages = [
   },
   {
     url: "/hero/wash.jpg",
-    title: "Car wash",
+    title: "Exterior detailing",
   },
   {
     url: "/hero/paint.jpg",

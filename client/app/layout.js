@@ -16,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Clarity Auto Spa | Premium 24/7 Car Wash & Detailing",
-  description: "Experience the best car detailing and exterior washing at Clarity Auto Spa. Open 24/7 with expert staff and premium service.",
+  title: "Clarity Auto Spa | Premium Auto Detail Shop",
+  description: "Experience the best auto detailing at Clarity Auto Spa. Expert staff and premium service.",
   icons: {
     icon: "/clarity.png",
   },

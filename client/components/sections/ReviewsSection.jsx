@@ -33,7 +33,7 @@ export default async function ReviewsSection() {
             What Our Clients Say
           </h2>
           <p className="text-brand-primary text-lg font-semibold max-w-2xl mx-auto">
-            Experience the best car detailing and exterior washing at Clarity Auto Spa. Open 24/7 with expert staff and a commitment to perfection.
+            Experience the best auto detailing at Clarity Auto Spa. Expert staff and a commitment to perfection.
           </p>
         </div>
 

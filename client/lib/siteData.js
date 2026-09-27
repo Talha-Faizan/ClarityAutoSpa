@@ -9,7 +9,7 @@ export const contactInfo = {
 export const stats = [
   { label: "Google Rating", value: "4.9/5", icon: "Star" },
   { label: "Happy Clients", value: "10,000+", icon: "Users" },
-  { label: "Availability", value: "24/7", icon: "Clock" },
+  { label: "Service", value: "Auto Detail Shop", icon: "Clock" },
   { label: "Experience", value: "15+ Years", icon: "Award" },
 ];
 
@@ -82,7 +82,7 @@ export const reviews = [
     name: "Sarah Jenkins",
     source: "Google Reviews",
     rating: 5,
-    text: "Absolutely the best detail my car has ever had. The staff was friendly and the 24/7 access is a game changer for my schedule.",
+    text: "Absolutely the best detail my car has ever had. The staff was friendly and the flexible scheduling is a game changer for me.",
   },
   {
     name: "Michael R.",

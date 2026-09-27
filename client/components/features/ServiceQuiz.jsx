@@ -7,7 +7,7 @@ import Image from "next/image";
 // Static image map for quiz options that don't directly correspond to a service
 const OPTION_IMAGES = {
   // Vehicle types
-  Sedan: "Quiz/sedan.jpg",
+  Sedan: "/Quiz/sedan.jpg",
   SUV: "/Quiz/suv.jpg",
   XLSUV: "/Quiz/xlsuv.jpg",
   // Goals

@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function ServiceCard({ service }) {
   return (
@@ -8,10 +9,12 @@ export default function ServiceCard({ service }) {
       <div className="relative bg-yellow-100 rounded-[1.5rem] overflow-hidden aspect-[4/3] flex flex-col">
         {/* The Image */}
         <div className="flex-1 relative overflow-hidden">
-          <img 
-            src={service.image} 
+          <Image 
+            src={service.image || "/img-6.jpg"} 
             alt={service.title} 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
           />
         </div>
         

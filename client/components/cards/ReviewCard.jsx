@@ -13,6 +13,7 @@ export default function ReviewCard({ review }) {
             src={avatarUrl} 
             alt={review.name} 
             className="w-14 h-14 rounded-full object-cover shadow-sm" 
+            loading="lazy"
           />
           <div>
             <h4 className="font-bold text-gray-900 text-[17px] leading-tight">

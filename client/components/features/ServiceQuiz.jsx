@@ -260,10 +260,12 @@ export default function ServiceQuiz({ services = [] }) {
                       className="group relative rounded-2xl overflow-hidden border-2 border-white/10 hover:border-brand-bg transition-all duration-300 aspect-[3/2] focus:outline-none focus:ring-2 focus:ring-brand-bg"
                     >
                       {/* Image */}
-                      <img
-                        src={imgSrc}
+                      <Image
+                        src={imgSrc || "/img-6.jpg"}
                         alt={opt.label}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
@@ -284,12 +286,14 @@ export default function ServiceQuiz({ services = [] }) {
             <div className="text-center max-w-xl mx-auto w-full animate-in fade-in slide-in-from-bottom-8 duration-700">
               {/* Result image */}
               {result.image ? (
-                <div className="w-32 h-32 mx-auto mb-6 rounded-2xl overflow-hidden border-2 border-brand-bg shadow-lg shadow-brand-bg/20">
-                  <img
-                    src={result.image}
-                    alt={result.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-2xl overflow-hidden border-2 border-brand-bg shadow-lg shadow-brand-bg/20 relative">
+                    <Image
+                      src={result.image || "/img-6.jpg"}
+                      alt={result.title}
+                      fill
+                      sizes="128px"
+                      className="object-cover"
+                    />
                 </div>
               ) : (
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-bg mb-6">

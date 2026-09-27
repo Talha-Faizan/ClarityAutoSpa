@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef } from 'react';
+import Image from 'next/image';
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 const modulo = (value, divisor) => ((value % divisor) + divisor) % divisor;
@@ -233,19 +234,15 @@ const InfiniteSpiral = ({
               role="listitem"
               aria-label={item.label ?? item.alt}
             >
-              <img
-                className="absolute inset-0 block h-full w-full select-none object-center"
+              <Image
                 src={item.src}
-                alt={item.alt}
-                loading={index < 6 ? 'eager' : 'lazy'}
+                alt={item.alt || ""}
+                fill
+                priority={index < 6}
+                className="select-none object-center"
                 draggable={false}
-                style={{
-                  width: cardWidth,
-                  height: cardHeight,
-                  maxWidth: 'none',
-                  maxHeight: 'none',
-                  objectFit: imageFit
-                }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: imageFit }}
               />
             </Card>
           );

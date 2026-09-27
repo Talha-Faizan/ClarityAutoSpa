@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 const navItems = [
   { label: "Services", href: "/services" },
@@ -15,7 +16,7 @@ const navItems = [
 
 function Logo() {
   return (
-    <img src="/clarity.png" alt="Clarity Auto Spa" className="h-8 w-auto object-contain" />
+    <Image src="/clarity.png" alt="Clarity Auto Spa" width={150} height={32} className="h-8 w-auto object-contain" priority />
   );
 }
 

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import { ArrowLeftRight } from "lucide-react";
+import Image from "next/image";
 
 export default function BeforeAfterSlider({
   beforeImage,
@@ -50,27 +51,32 @@ export default function BeforeAfterSlider({
       onTouchMove={handleTouchMove}
       onMouseLeave={handleMouseLeave}
     >
-      <img
+      <Image
         src={afterImage}
         alt={`After: ${alt}`}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        draggable={false}
+        fill
+        className="object-cover pointer-events-none"
+        sizes="(max-width: 768px) 100vw, 80vw"
+        priority
       />
 
       <div
         className="absolute top-0 left-0 h-full overflow-hidden pointer-events-none"
         style={{ width: `${sliderPosition}%` }}
       >
-        <img
-          src={beforeImage}
-          alt={`Before: ${alt}`}
-          className="absolute top-0 left-0 h-full object-cover"
-          style={{
-            width: containerWidth ? `${containerWidth}px` : "100%",
-            maxWidth: "none",
-          }}
-          draggable={false}
-        />
+        <div 
+          className="absolute top-0 left-0 h-full pointer-events-none" 
+          style={{ width: containerWidth ? `${containerWidth}px` : "100vw" }}
+        >
+          <Image
+            src={beforeImage}
+            alt={`Before: ${alt}`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 80vw"
+            priority
+          />
+        </div>
       </div>
 
       <div

@@ -1,6 +1,7 @@
 import { contactInfo } from "@/lib/siteData";
 import Link from "next/link";
 import { Phone, MapPin, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,7 +14,7 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <Link href="/" className="block mb-6">
-              <img src="/logo.png" alt="Clarity Auto Spa Logo" className="h-40 md:h-48 w-auto object-contain mx-auto md:mx-0" />
+              <Image src="/logo.png" alt="Clarity Auto Spa Logo" width={300} height={192} className="h-40 md:h-48 w-auto object-contain mx-auto md:mx-0" />
             </Link>
             <p className="text-brand-muted leading-relaxed mb-6 max-w-sm">
               Premium car washing and detailing services available 24/7. 

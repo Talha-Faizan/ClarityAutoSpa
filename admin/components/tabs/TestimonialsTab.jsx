@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { MessageSquare, RefreshCw, Trash2, Edit2, Plus, Star } from "lucide-react";
+import ConfirmModal from "../ui/ConfirmModal";
 
 export default function TestimonialsTab() {
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, id: null, type: null, customText: null });
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
@@ -120,7 +122,7 @@ export default function TestimonialsTab() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this testimonial?")) return;
+    
     // Optimistic UI: remove immediately
     setTestimonials(prev => prev.filter(t => t._id !== id));
     try {
@@ -296,7 +298,7 @@ export default function TestimonialsTab() {
                     onChange={e => setFormData({...formData, isFeatured: e.target.checked})} 
                     className="sr-only peer" 
                   />
-                  <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+                  <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-cream after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
                 </label>
                 <span className="text-sm font-medium text-gray-900">Featured review</span>
               </div>
@@ -311,6 +313,19 @@ export default function TestimonialsTab() {
           </div>
         </div>
       )}
+          <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        onClose={() => setConfirmModal({ isOpen: false, id: null, type: null, customText: null })}
+        onConfirm={() => {
+          if (confirmModal.type === 'Delete Service Category') {
+             handleDeleteServiceCat(confirmModal.id);
+          } else {
+             handleDelete(confirmModal.id); // for CategoriesTab it's handleDelete(cat)
+          }
+        }}
+        title={confirmModal.type}
+        message={confirmModal.customText}
+      />
     </div>
   );
 }

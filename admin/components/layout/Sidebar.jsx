@@ -5,7 +5,7 @@ export default function Sidebar({ activeTab, setActiveTab, handleLogout }) {
     <aside className="w-full md:w-64 bg-[#F9FAFB] border-r border-gray-200 flex flex-col shrink-0">
       <div className="p-6 border-b border-gray-200 flex items-center gap-3">
         <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-          <Car className="w-6 h-6 text-white" />
+          <Car className="w-6 h-6 text-cream" />
         </div>
         <div>
           <h1 className="font-bold text-sm text-gray-900">Clarity Auto Spa</h1>
@@ -60,6 +60,28 @@ export default function Sidebar({ activeTab, setActiveTab, handleLogout }) {
         >
           <Tag className="w-4 h-4" />
           Categories
+        </button>
+        <button
+          onClick={() => setActiveTab("submissions")}
+          className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+            activeTab === 'submissions' 
+              ? 'bg-primary-light text-primary border-l-4 border-primary' 
+              : 'text-gray-600 hover:bg-gray-100 border-l-4 border-transparent'
+          }`}
+        >
+          <MessageSquare className="w-4 h-4" />
+          Submissions
+        </button>
+        <button
+          onClick={() => setActiveTab("settings")}
+          className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+            activeTab === 'settings' 
+              ? 'bg-primary-light text-primary border-l-4 border-primary' 
+              : 'text-gray-600 hover:bg-gray-100 border-l-4 border-transparent'
+          }`}
+        >
+          <Tag className="w-4 h-4" />
+          Settings
         </button>
         <div className="mt-8">
           <button

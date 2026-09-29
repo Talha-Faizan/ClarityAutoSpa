@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { Plus, Edit2, Trash2, Image as ImageIcon, CircleDollarSign, Car, GripVertical } from "lucide-react";
+import ConfirmModal from "../ui/ConfirmModal";
 
 export default function ServicesTab() {
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, id: null, type: null, customText: null });
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -84,7 +86,7 @@ export default function ServicesTab() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this service?")) return;
+    
     
     try {
       const token = Cookies.get("admin_token");
@@ -223,7 +225,7 @@ export default function ServicesTab() {
                   <button onClick={() => handleOpenModal(service)} className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-200">
                     <Edit2 className="w-3.5 h-3.5" /> Edit
                   </button>
-                  <button onClick={() => handleDelete(service._id)} className="flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded-md hover:bg-red-100">
+                  <button onClick={() => setConfirmModal({ isOpen: true, id: service._id, type: "Delete Service", customText: "Are you sure you want to delete this service?" })} className="flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded-md hover:bg-red-100">
                     <Trash2 className="w-3.5 h-3.5" /> Delete
                   </button>
                   <button className="text-gray-400 hover:text-gray-600 cursor-grab">
@@ -346,6 +348,19 @@ export default function ServicesTab() {
           </div>
         </div>
       )}
+          <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        onClose={() => setConfirmModal({ isOpen: false, id: null, type: null, customText: null })}
+        onConfirm={() => {
+          if (confirmModal.type === 'Delete Service Category') {
+             handleDeleteServiceCat(confirmModal.id);
+          } else {
+             handleDelete(confirmModal.id); // for CategoriesTab it's handleDelete(cat)
+          }
+        }}
+        title={confirmModal.type}
+        message={confirmModal.customText}
+      />
     </div>
   );
 }

@@ -31,7 +31,8 @@ router.post('/', requireAuth, upload.fields([{ name: 'image', maxCount: 1 }, { n
       title: req.body.title || '',
       category: req.body.category || 'Detailing',
       imageType,
-      displayOrder: req.body.displayOrder || 0
+      displayOrder: req.body.displayOrder || 0,
+      showOnLandingPage: req.body.showOnLandingPage === 'true'
     };
 
     if (imageType === 'Plain Image') {
@@ -80,11 +81,12 @@ router.post('/', requireAuth, upload.fields([{ name: 'image', maxCount: 1 }, { n
 // @desc    Update gallery image metadata (Admin)
 router.patch('/:id', requireAuth, async (req, res) => {
   try {
-    const { title, category, displayOrder } = req.body;
+    const { title, category, displayOrder, showOnLandingPage } = req.body;
     const updateData = {};
     if (title !== undefined) updateData.title = title;
     if (category !== undefined) updateData.category = category;
     if (displayOrder !== undefined) updateData.displayOrder = displayOrder;
+    if (showOnLandingPage !== undefined) updateData.showOnLandingPage = showOnLandingPage === true || showOnLandingPage === 'true';
 
     const updatedImage = await GalleryImage.findByIdAndUpdate(
       req.params.id,

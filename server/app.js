@@ -33,6 +33,8 @@ app.use('/api/services', require('./routes/services'));
 app.use('/api/testimonials', require('./routes/testimonials'));
 app.use('/api/gallery', require('./routes/gallery'));
 app.use('/api/categories', require('./routes/categories'));
+app.use('/api/settings', require('./routes/settings'));
+app.use('/api/submissions', require('./routes/submissions'));
 
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Clarity Auto Spa API is running.' });

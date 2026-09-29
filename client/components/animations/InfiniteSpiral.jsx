@@ -226,7 +226,7 @@ const InfiniteSpiral = ({
               ref={node => {
                 cardRefs.current[index] = node;
               }}
-              className="absolute left-1/2 top-1/2 block h-[var(--spiral-height)] w-[var(--spiral-width)] overflow-hidden rounded-[var(--spiral-radius)] border border-white/25 bg-white/10 [backface-visibility:hidden] [transform-style:preserve-3d] [will-change:transform,opacity] motion-reduce:transition-none"
+              className="absolute left-1/2 top-1/2 block h-[var(--spiral-height)] w-[var(--spiral-width)] overflow-hidden rounded-[var(--spiral-radius)] border border-cream/25 bg-cream/10 [backface-visibility:hidden] [transform-style:preserve-3d] [will-change:transform,opacity] motion-reduce:transition-none"
               style={{ width: cardWidth, height: cardHeight, borderRadius: cardRadius }}
               href={item.href}
               target={item.target}

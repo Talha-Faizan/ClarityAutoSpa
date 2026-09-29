@@ -1,10 +1,8 @@
 import BeforeAfterSlider from "@/components/features/BeforeAfterSlider";
 
-const SERVICE_CATEGORIES = ['Detailing', 'Exterior Wash', 'Interior Detailing'];
-
 export const metadata = {
-  title: "Gallery | Clarity Auto Spa",
-  description: "View our before and after auto detailing transformations.",
+  title: "Our Work | Clarity Auto Spa",
+  description: "View our auto detailing transformations.",
 };
 
 export default async function GalleryPage() {
@@ -18,66 +16,70 @@ export default async function GalleryPage() {
     console.error("Network error fetching gallery:", error);
   }
 
-  const groupedImages = SERVICE_CATEGORIES.map(category => {
-    return {
-      category,
-      items: images.filter(img => img.category === category)
-    };
-  }).filter(group => group.items.length > 0);
+  const beforeAfters = images.filter(img => img.imageType === 'Before/After');
+  const plainImages = images.filter(img => img.imageType === 'Plain Image');
 
   return (
-    <div className="pt-32 pb-24 bg-brand-primary min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="text-white font-bold tracking-widest uppercase text-md mb-4">
+    <div className="pt-32 pb-24 bg-cream min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-cream-alt text-charcoal px-3 py-1 rounded-full tracking-[0.12em] uppercase mb-4 text-[12px] md:text-[13px] font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
             Our Work
           </div>
-          <h1 className="font-sans font-black text-4xl md:text-6xl tracking-wide text-brand-bg uppercase mb-6">
+          <h1 className="font-heading font-medium md: text-charcoal capitalize mb-6 text-[clamp(2.5rem,5vw,4rem)] leading-[1.08] tracking-[-0.01em]">
             Transformation Gallery
           </h1>
-          <p className="text-white/70 text-lg">
+          <p className="text-gray-600 text-lg">
             See the dramatic difference a professional detail can make.
           </p>
         </div>
 
-        <div className="space-y-24">
-          {groupedImages.length === 0 ? (
-            <div className="text-center text-white/50 text-xl font-light">More transformations coming soon.</div>
-          ) : (
-            groupedImages.map((section) => (
-              <div key={section.category}>
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-10 pb-4 border-b border-white/10">
-                  {section.category}
-                </h2>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                  {section.items.map((item) => (
-                    <div key={item._id} className="flex flex-col gap-4">
-                      {item.imageType === 'Plain Image' ? (
-                        <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl relative">
-                          <img src={item.imageUrl} alt={item.title || "Gallery Image"} className="w-full h-full object-cover" />
-                        </div>
-                      ) : (
-                        <BeforeAfterSlider 
-                          beforeImage={item.beforeImageUrl} 
-                          afterImage={item.afterImageUrl} 
-                        />
-                      )}
-                      {item.title && (
-                        <p className="text-white/60 text-sm italic text-center">
-                          {item.title}
-                        </p>
-                      )}
-                    </div>
-                  ))}
+        {beforeAfters.length > 0 && (
+          <div className="mb-24 space-y-12">
+            <h2 className="text-2xl font-medium text-center text-charcoal capitalize mb-8 text-[clamp(2rem,3.5vw,2.75rem)] leading-[1.15] font-heading">Featured Transformations</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {beforeAfters.map(item => (
+                <div key={item._id} className="flex flex-col gap-4">
+                  <BeforeAfterSlider 
+                    beforeImage={item.beforeImageUrl} 
+                    afterImage={item.afterImageUrl} 
+                  />
+                  {item.title && (
+                    <p className="text-gray-500 font-medium text-sm text-center">
+                      {item.title}
+                    </p>
+                  )}
                 </div>
-              </div>
-            ))
-          )}
-        </div>
-        
+              ))}
+            </div>
+          </div>
+        )}
       </div>
+
+      {plainImages.length > 0 && (
+        <div className="w-full px-4 sm:px-6">
+          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+            {plainImages.map((item) => (
+              <div key={item._id} className="break-inside-avoid relative rounded-2xl overflow-hidden shadow-md group">
+                <img src={item.imageUrl} alt={item.title || "Gallery Image"} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+                {item.title && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className="text-cream font-medium text-sm">
+                      {item.title}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {images.length === 0 && (
+        <div className="text-center text-gray-400 text-xl font-light">More transformations coming soon.</div>
+      )}
+      
     </div>
   );
 }

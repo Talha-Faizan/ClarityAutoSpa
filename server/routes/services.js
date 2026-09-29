@@ -22,6 +22,20 @@ const serviceSchema = z.object({
 
 const editServiceSchema = serviceSchema.partial();
 
+const ServiceCategory = require('../models/ServiceCategory');
+
+// @route   GET /api/services/categories
+// @desc    Get all service categories (Public)
+router.get('/categories', async (req, res) => {
+  try {
+    const categories = await ServiceCategory.find().sort({ order: 1 });
+    res.json(categories);
+  } catch (error) {
+    console.error('Error fetching service categories:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+});
+
 // @route   GET /api/services
 // @desc    Get all services (Public)
 router.get('/', async (req, res) => {

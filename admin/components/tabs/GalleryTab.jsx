@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import Cookies from "js-cookie";
 import { Image as ImageIcon, Trash2, Upload, Edit2, Plus } from "lucide-react";
+import ConfirmModal from "../ui/ConfirmModal";
 
 export default function GalleryTab() {
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, id: null, type: null, customText: null });
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -16,7 +18,8 @@ export default function GalleryTab() {
   const [formData, setFormData] = useState({
     title: "",
     category: "Detailing",
-    imageType: "Plain Image"
+    imageType: "Plain Image",
+    showOnLandingPage: false
   });
 
   // Edit modal state
@@ -25,6 +28,7 @@ export default function GalleryTab() {
   const [editFormData, setEditFormData] = useState({
     title: "",
     category: "Detailing",
+    showOnLandingPage: false
   });
   const [isEditSubmitting, setIsEditSubmitting] = useState(false);
 
@@ -87,6 +91,7 @@ export default function GalleryTab() {
       data.append("title", formData.title);
       data.append("category", formData.category);
       data.append("imageType", formData.imageType);
+      data.append("showOnLandingPage", formData.showOnLandingPage);
       
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/gallery`, {
         method: "POST",
@@ -99,7 +104,7 @@ export default function GalleryTab() {
         setSelectedFile(null);
         setBeforeFile(null);
         setAfterFile(null);
-        setFormData({ title: "", category: serviceCategories[0] || "Detailing", imageType: "Plain Image" });
+        setFormData({ title: "", category: serviceCategories[0] || "Detailing", imageType: "Plain Image", showOnLandingPage: false });
         fetchImages();
       } else {
         const errData = await res.json();
@@ -117,6 +122,7 @@ export default function GalleryTab() {
     setEditFormData({
       title: img.title || "",
       category: img.category || "Detailing",
+      showOnLandingPage: img.showOnLandingPage || false,
     });
     setIsEditModalOpen(true);
   };
@@ -151,7 +157,7 @@ export default function GalleryTab() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this image?")) return;
+    
     // Optimistic UI: remove immediately
     setImages(prev => prev.filter(img => img._id !== id));
     try {
@@ -217,7 +223,7 @@ export default function GalleryTab() {
                             <img src={img.imageUrl} alt="Gallery" className="w-full h-full object-cover" />
                           ) : (
                             <div className="flex h-full w-full">
-                              <img src={img.beforeImageUrl} alt="Before" className="w-1/2 h-full object-cover border-r border-white/50" />
+                              <img src={img.beforeImageUrl} alt="Before" className="w-1/2 h-full object-cover border-r border-cream/50" />
                               <img src={img.afterImageUrl} alt="After" className="w-1/2 h-full object-cover" />
                             </div>
                           )}
@@ -330,6 +336,20 @@ export default function GalleryTab() {
                 </select>
               </div>
 
+                            
+
+                            <div className="flex items-center gap-2 mb-4">
+                <input 
+                  type="checkbox" 
+                  id="showOnLandingPage"
+                  checked={formData.showOnLandingPage} 
+                  onChange={e => setFormData({...formData, showOnLandingPage: e.target.checked})} 
+                  className="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
+                />
+                <label htmlFor="showOnLandingPage" className="text-sm font-medium text-gray-900">
+                  Show on Landing Page
+                </label>
+              </div>
               {formData.imageType === 'Plain Image' ? (
                 <div>
                   <label className="block text-sm font-medium text-gray-900 mb-1">Image</label>
@@ -416,6 +436,18 @@ export default function GalleryTab() {
                 </select>
               </div>
 
+              <div className="flex items-center gap-2 mb-4">
+                <input 
+                  type="checkbox" 
+                  id="editShowOnLandingPage"
+                  checked={editFormData.showOnLandingPage} 
+                  onChange={e => setEditFormData({...editFormData, showOnLandingPage: e.target.checked})} 
+                  className="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
+                />
+                <label htmlFor="editShowOnLandingPage" className="text-sm font-medium text-gray-900">
+                  Show on Landing Page
+                </label>
+              </div>
               <div className="pt-4 flex gap-3 justify-end">
                 <button type="button" onClick={() => { setIsEditModalOpen(false); setEditingImage(null); }} className="px-4 py-2 bg-gray-100 rounded-lg font-medium text-sm text-gray-700 hover:bg-gray-200">Cancel</button>
                 <button type="submit" disabled={isEditSubmitting} className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium text-sm disabled:opacity-50 hover:bg-primary-dark">
@@ -426,6 +458,19 @@ export default function GalleryTab() {
           </div>
         </div>
       )}
+          <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        onClose={() => setConfirmModal({ isOpen: false, id: null, type: null, customText: null })}
+        onConfirm={() => {
+          if (confirmModal.type === 'Delete Service Category') {
+             handleDeleteServiceCat(confirmModal.id);
+          } else {
+             handleDelete(confirmModal.id); // for CategoriesTab it's handleDelete(cat)
+          }
+        }}
+        title={confirmModal.type}
+        message={confirmModal.customText}
+      />
     </div>
   );
 }

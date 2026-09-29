@@ -110,7 +110,7 @@ const CurvedLoop = ({
       onPointerLeave={endDrag}
     >
       <svg
-        className="select-none w-full overflow-visible block h-12 sm:h-16 md:h-20 text-[1.5rem] font-sans font-black text-white uppercase leading-none tracking-widest"
+        className="select-none w-full overflow-visible block h-12 sm:h-16 md:h-20 text-[1.5rem] font-sans font-semibold text-cream uppercase leading-none tracking-widest"
         viewBox="0 0 1440 120"
         preserveAspectRatio="xMidYMid slice"
       >

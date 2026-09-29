@@ -4,8 +4,8 @@ export default function ReviewCard({ review }) {
   const avatarUrl = review.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(review.name)}&background=F3F4F6&color=111827&bold=true`;
 
   return (
-    <div className="bg-white/40 p-2 rounded-[2.5rem] h-full flex transition-transform duration-300 hover:-translate-y-1 shadow-sm">
-      <div className="flex flex-col bg-white p-8 rounded-[2rem] w-full shadow-sm">
+    <div className="bg-cream/40 p-2 rounded-[2.5rem] h-full flex transition-transform duration-300 hover:-translate-y-1 shadow-sm">
+      <div className="flex flex-col bg-cream p-8 rounded-[2rem] w-full shadow-sm">
         
         {/* Profile Section */}
         <div className="flex items-center gap-4 mb-6">
@@ -16,7 +16,7 @@ export default function ReviewCard({ review }) {
             loading="lazy"
           />
           <div>
-            <h4 className="font-bold text-gray-900 text-[17px] leading-tight">
+            <h4 className="font-semibold text-gray-900 text-[17px] leading-tight">
               {review.name}
             </h4>
             <p className="text-gray-400 text-sm mt-0.5">
@@ -26,7 +26,7 @@ export default function ReviewCard({ review }) {
         </div>
         
         {/* Quote Body */}
-        <blockquote className="text-gray-800 text-[15px] leading-relaxed mb-8 flex-grow font-medium">
+        <blockquote className="text-charcoal-soft text-[15px] leading-relaxed mb-8 flex-grow font-medium">
           “ {review.text} ”
         </blockquote>
         
@@ -36,11 +36,11 @@ export default function ReviewCard({ review }) {
             {[...Array(5)].map((_, i) => (
               <Star 
                 key={i} 
-                className={`w-6 h-6 ${i < review.rating ? 'fill-brand-bg text-brand-bg' : 'fill-gray-200 text-gray-200'}`} 
+                className={`w-6 h-6 ${i < review.rating ? 'fill-gold text-gold' : 'fill-grey text-grey'}`} 
               />
             ))}
           </div>
-          <span className="font-bold text-gray-900 text-lg">
+          <span className="font-semibold text-charcoal text-lg">
             {Number(review.rating).toFixed(2)}
           </span>
         </div>

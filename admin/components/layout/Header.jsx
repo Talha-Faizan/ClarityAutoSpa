@@ -1,6 +1,6 @@
 export default function Header({ handleLogout }) {
   return (
-    <header className="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0">
+    <header className="h-20 bg-cream border-b border-gray-200 flex items-center justify-between px-8 shrink-0">
       <div>
         <h2 className="text-base text-gray-900">
           <span className="font-bold">Clarity Auto Spa</span> — Admin Panel
@@ -10,7 +10,7 @@ export default function Header({ handleLogout }) {
         </p>
       </div>
       <div 
-        className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm cursor-pointer" 
+        className="w-10 h-10 rounded-full bg-primary text-cream flex items-center justify-center font-bold text-sm cursor-pointer" 
         onClick={handleLogout} 
         title="Logout"
       >

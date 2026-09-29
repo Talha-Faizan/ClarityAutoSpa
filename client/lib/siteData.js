@@ -61,13 +61,13 @@ export const whyUsPoints = [
     icon: "Clock",
   },
   {
-    title: "Eco-Friendly",
-    description: "We use biodegradable products and recycle 80% of our water.",
+    title: "Flood & Mold Cleaning",
+    description: "Interior cleaning, drying and odor treatment for water-affected vehicles. We clean, dry and treat vehicle interiors. We do not repair mechanical or electrical damage caused by flooding.",
     icon: "Leaf",
   },
   {
-    title: "Expert Staff",
-    description: "Our detailing professionals are trained and certified.",
+    title: "Dedicated Team",
+    description: "Our detailing team is committed to providing excellent care for your vehicle.",
     icon: "BadgeCheck",
   },
   {

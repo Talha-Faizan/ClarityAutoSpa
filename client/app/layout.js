@@ -1,18 +1,22 @@
-import { Archivo_Black, Inter } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileBottomBar from "@/components/layout/MobileBottomBar";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import "./globals.css";
 
-const archivoBlack = Archivo_Black({
-  variable: "--font-archivo",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-heading",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["500", "600"],
+  display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -25,12 +29,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${archivoBlack.variable} font-sans antialiased min-h-screen flex flex-col`}>
+    <html lang="en" className={`scroll-smooth ${cormorant.variable} ${manrope.variable}`}>
+      <body className="font-sans antialiased min-h-screen flex flex-col text-[16px] md:text-[17px] leading-[1.65]">
         <SmoothScroll>
           <Navbar />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow pb-16 md:pb-0">{children}</main>
           <Footer />
+          <MobileBottomBar />
         </SmoothScroll>
       </body>
     </html>

@@ -11,6 +11,7 @@ const galleryImageSchema = new mongoose.Schema({
   afterImageUrl: { type: String, required: false }, // For Before/After
   afterImageId: { type: String, required: false }, // For Before/After
   displayOrder: { type: Number, default: 0 },
+  showOnLandingPage: { type: Boolean, default: false },
 }, { timestamps: true });
 
 module.exports = mongoose.model('GalleryImage', galleryImageSchema);

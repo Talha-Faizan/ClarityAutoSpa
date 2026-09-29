@@ -8,15 +8,15 @@ import Image from "next/image";
 
 const navItems = [
   { label: "Services", href: "/services" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Our Work", href: "/gallery" },
   { label: "Reviews", href: "/testimonials" },
-  { label: "Location", href: "/location" },
+  { label: "About Us", href: "/#about-us" },
+  { label: "Contact / Location", href: "/location" },
 ];
 
 function Logo() {
   return (
-    <Image src="/clarity.png" alt="Clarity Auto Spa" width={150} height={32} className="h-8 w-auto object-contain" priority />
+    <Image src="/clarity.png" alt="Clarity Auto Spa" width={180} height={44} className="h-[36px] md:h-[44px] w-auto object-contain" priority />
   );
 }
 
@@ -24,30 +24,34 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-5xl">
-      <div className="bg-brand-primary backdrop-blur-md border border-brand-primary/20 rounded-full px-3 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.4)]">
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+      <div className="bg-cream backdrop-blur-md border border-gray-200 rounded-full px-4 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.1)]">
         {/* Left: Logo */}
         <Link href="/" className="flex items-center ml-2">
           <Logo />
         </Link>
 
         {/* Center: Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map((item) => (
-            <Link key={item.label} href={item.href} className="text-sm font-medium text-white hover:text-brand-bg transition-colors">
+            <Link key={item.label} href={item.href} className="text-sm font-semibold text-charcoal hover:text-gold transition-colors relative group">
               {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span>
             </Link>
           ))}
         </nav>
 
         {/* Right: CTA Button (Desktop) & Mobile Toggle */}
-        <div className="flex items-center gap-4">
-          <Link href="tel:+13472278485" className="hidden md:flex items-center justify-center bg-[#FFC601] text-[#383939] px-6 py-2.5 rounded-full text-sm font-bold hover:brightness-110 transition-all shadow-lg">
-            Call (347) 227-8485
+        <div className="flex items-center gap-3">
+          <Link href="/getquote" className="hidden lg:flex items-center justify-center bg-gold text-charcoal px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gold-hover hover:text-charcoal transition-all shadow-md">
+            Book an Appointment
+          </Link>
+          <Link href="tel:+13472278485" className="hidden lg:flex items-center justify-center border-2 border-gold text-charcoal px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gold hover:text-charcoal transition-colors">
+            Call
           </Link>
 
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 text-brand-secondary hover:text-brand-primary transition-colors mr-2">
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-charcoal hover:text-gold transition-colors mr-1">
+            {mobileOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
@@ -59,7 +63,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }} 
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-20 left-0 w-full bg-brand-bg-alt/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden md:hidden border border-brand-primary/20"
+            className="absolute top-20 left-0 w-full bg-cream/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden lg:hidden border border-gray-200"
           >
             <div className="flex flex-col p-4">
               {navItems.map((item) => (
@@ -67,17 +71,25 @@ export default function Navbar() {
                   key={item.label} 
                   href={item.href} 
                   onClick={() => setMobileOpen(false)} 
-                  className="px-4 py-3 text-brand-secondary font-medium hover:bg-brand-bg rounded-xl transition-colors"
+                  className="px-4 py-3 text-charcoal font-semibold hover:bg-gray-50 rounded-xl transition-colors border-b border-gray-100 last:border-0"
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link 
-                href="tel:+13472278485" 
-                className="mt-2 mx-2 mb-2 text-center bg-brand-primary text-white px-4 py-3 rounded-xl font-bold hover:brightness-110 transition-all"
-              >
-                Call (347) 227-8485
-              </Link>
+              <div className="flex gap-2 mt-4 px-2 mb-2">
+                <Link 
+                  href="tel:+13472278485" 
+                  className="flex-1 text-center bg-gray-100 text-charcoal px-4 py-3 rounded-xl font-semibold transition-all"
+                >
+                  Call
+                </Link>
+                <Link 
+                  href="/getquote" 
+                  className="flex-1 text-center bg-gold text-charcoal px-4 py-3 rounded-xl font-semibold hover:bg-gold-hover hover:text-charcoal transition-all shadow-md"
+                >
+                  Quote
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

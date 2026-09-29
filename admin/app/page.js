@@ -9,6 +9,8 @@ import ServicesTab from "../components/tabs/ServicesTab";
 import TestimonialsTab from "../components/tabs/TestimonialsTab";
 import GalleryTab from "../components/tabs/GalleryTab";
 import CategoriesTab from "../components/tabs/CategoriesTab";
+import SubmissionsTab from "../components/tabs/SubmissionsTab";
+import SettingsTab from "../components/tabs/SettingsTab";
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("services");
   const [admin, setAdmin] = useState(null);
@@ -57,12 +59,14 @@ export default function Dashboard() {
         <Header handleLogout={handleLogout} />
 
         {/* Scrollable Content */}
-        <main className="flex-1 p-8 overflow-y-auto bg-white">
+        <main className="flex-1 p-8 overflow-y-auto bg-cream">
           <div className="max-w-5xl mx-auto">
             {activeTab === "services" && <ServicesTab />}
             {activeTab === "testimonials" && <TestimonialsTab />}
             {activeTab === "gallery" && <GalleryTab />}
             {activeTab === "categories" && <CategoriesTab />}
+            {activeTab === "submissions" && <SubmissionsTab />}
+            {activeTab === "settings" && <SettingsTab />}
           </div>
         </main>
       </div>

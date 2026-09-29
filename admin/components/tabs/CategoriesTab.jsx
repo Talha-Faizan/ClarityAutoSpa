@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { Plus, Trash2, Tag, Car } from "lucide-react";
+import ConfirmModal from "../ui/ConfirmModal";
 
 export default function CategoriesTab() {
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, id: null, type: null, customText: null });
   const [serviceCategories, setServiceCategories] = useState([]);
   const [carCategories, setCarCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,7 +74,7 @@ export default function CategoriesTab() {
   };
 
   const handleDelete = async (type, name) => {
-    if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
+    
 
     try {
       const token = Cookies.get("admin_token");
@@ -226,6 +228,19 @@ export default function CategoriesTab() {
           </div>
         </div>
       )}
+          <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        onClose={() => setConfirmModal({ isOpen: false, id: null, type: null, customText: null })}
+        onConfirm={() => {
+          if (confirmModal.type === 'Delete Service Category') {
+             handleDelete('service', confirmModal.id);
+          } else if (confirmModal.type === 'Delete Car Category') {
+             handleDelete('car', confirmModal.id);
+          }
+        }}
+        title={confirmModal.type}
+        message={confirmModal.customText}
+      />
     </div>
   );
 }

@@ -44,7 +44,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+      <div className="max-w-md w-full bg-cream rounded-2xl shadow-xl p-8 border border-gray-100">
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4 shadow-md">
             <Car className="w-8 h-8 text-yellow-500" />
@@ -68,7 +68,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-black focus:border-black outline-none transition-all text-black bg-white"
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-black focus:border-black outline-none transition-all text-black bg-cream"
               placeholder="admin@clarityautospa.com"
               required
             />
@@ -82,7 +82,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-black focus:border-black outline-none transition-all text-black bg-white"
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-black focus:border-black outline-none transition-all text-black bg-cream"
               placeholder="••••••••"
               required
             />
@@ -91,7 +91,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-black text-white font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-gray-800 transition-colors disabled:opacity-50 mt-4"
+            className="w-full bg-black text-cream font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-gray-800 transition-colors disabled:opacity-50 mt-4"
           >
             {loading ? "Authenticating..." : "Sign In"}
           </button>

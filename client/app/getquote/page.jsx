@@ -1,17 +1,15 @@
-import LocationSection from "@/components/sections/LocationSection";
-import CTABanner from "@/components/layout/CTABanner";
 import QuoteForm from "@/components/features/QuoteForm";
+import CTABanner from "@/components/layout/CTABanner";
 
 export const metadata = {
-  title: "Location & Contact | Clarity Auto Spa",
-  description: "Visit Clarity Auto Spa in the heart of Park Slope, Brooklyn or request a quote online.",
+  title: "Get a Quote | Clarity Auto Spa",
+  description: "Request a free assessment and quote for your vehicle.",
 };
 
-export default function LocationPage() {
+export default function GetQuotePage() {
   return (
     <div className="pt-24 bg-charcoal min-h-screen flex flex-col">
       <div className="flex-grow">
-        <LocationSection />
         <section className="bg-cream py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <QuoteForm />
